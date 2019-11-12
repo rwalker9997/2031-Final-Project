@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2Bot
-Tue Nov 12 17:27:13 2019
+Tue Nov 12 17:45:06 2019
 Quartus II 64-Bit Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
 
 
@@ -29,7 +29,7 @@ Quartus II 64-Bit Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Versio
  21. General Register Statistics
  22. Inverted Register Statistics
  23. Multiplexer Restructuring Statistics (Restructuring Performed)
- 24. Source assignments for SCOMP:inst8|altsyncram:MEMORY|altsyncram_nrs3:auto_generated
+ 24. Source assignments for SCOMP:inst8|altsyncram:MEMORY|altsyncram_ors3:auto_generated
  25. Source assignments for IR_RCVR:inst44|ir_lpm_counter0:inst18|lpm_counter:lpm_counter_component
  26. Source assignments for IR_RCVR:inst44|ir_lpm_counter1:inst24|lpm_counter:lpm_counter_component
  27. Source assignments for IR_RCVR:inst44|ir_lpm_counter0:inst16|lpm_counter:lpm_counter_component
@@ -175,7 +175,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Nov 12 17:27:12 2019         ;
+; Analysis & Synthesis Status        ; Successful - Tue Nov 12 17:45:06 2019         ;
 ; Quartus II 64-Bit Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Full Version ;
 ; Revision Name                      ; DE2Bot                                        ;
 ; Top-level Entity Name              ; DE2bot                                        ;
@@ -336,8 +336,8 @@ applicable agreement for further details.
 ; ir_lpm_dff9.vhd                  ; yes             ; User Wizard-Generated File             ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/ir_lpm_dff9.vhd           ;
 ; altpll.tdf                       ; yes             ; Megafunction                           ; c:/appl/altera/91/quartus/libraries/megafunctions/altpll.tdf                                          ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/appl/altera/91/quartus/libraries/megafunctions/altsyncram.tdf                                      ;
-; db/altsyncram_nrs3.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/db/altsyncram_nrs3.tdf    ;
-; 11-12_2.mif                      ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/11-12_2.mif               ;
+; db/altsyncram_ors3.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/db/altsyncram_ors3.tdf    ;
+; 11-12_3.mif                      ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/11-12_3.mif               ;
 ; lpm_clshift.tdf                  ; yes             ; Megafunction                           ; c:/appl/altera/91/quartus/libraries/megafunctions/lpm_clshift.tdf                                     ;
 ; db/lpm_clshift_fuc.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/db/lpm_clshift_fuc.tdf    ;
 ; lpm_bustri.tdf                   ; yes             ; Megafunction                           ; c:/appl/altera/91/quartus/libraries/megafunctions/lpm_bustri.tdf                                      ;
@@ -577,12 +577,12 @@ applicable agreement for further details.
 ;    |SAFETY_ENABLE:inst4|                          ; 1 (1)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SAFETY_ENABLE:inst4                                                                                                                             ;              ;
 ;    |SCOMP:inst8|                                  ; 522 (439)         ; 227 (227)    ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SCOMP:inst8                                                                                                                                     ;              ;
 ;       |altsyncram:MEMORY|                         ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SCOMP:inst8|altsyncram:MEMORY                                                                                                                   ;              ;
-;          |altsyncram_nrs3:auto_generated|         ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SCOMP:inst8|altsyncram:MEMORY|altsyncram_nrs3:auto_generated                                                                                    ;              ;
+;          |altsyncram_ors3:auto_generated|         ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SCOMP:inst8|altsyncram:MEMORY|altsyncram_ors3:auto_generated                                                                                    ;              ;
 ;       |lpm_clshift:SHIFTER|                       ; 83 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SCOMP:inst8|lpm_clshift:SHIFTER                                                                                                                 ;              ;
 ;          |lpm_clshift_fuc:auto_generated|         ; 83 (83)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SCOMP:inst8|lpm_clshift:SHIFTER|lpm_clshift_fuc:auto_generated                                                                                  ;              ;
 ;    |SLCD:inst55|                                  ; 85 (85)           ; 49 (49)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SLCD:inst55                                                                                                                                     ;              ;
 ;    |SONAR:inst54|                                 ; 628 (620)         ; 344 (344)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SONAR:inst54                                                                                                                                    ;              ;
-;       |lpm_bustri:IO_BUS|                         ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SONAR:inst54|lpm_bustri:IO_BUS                                                                                                                  ; work         ;
+;       |lpm_bustri:IO_BUS|                         ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|SONAR:inst54|lpm_bustri:IO_BUS                                                                                                                  ;              ;
 ;    |TIMER:inst20|                                 ; 26 (18)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|TIMER:inst20                                                                                                                                    ;              ;
 ;       |lpm_bustri:IO_BUS|                         ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|TIMER:inst20|lpm_bustri:IO_BUS                                                                                                                  ;              ;
 ;    |UART_INTERFACE:inst1|                         ; 221 (7)           ; 244 (0)      ; 768         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|UART_INTERFACE:inst1                                                                                                                            ;              ;
@@ -658,8 +658,8 @@ applicable agreement for further details.
 ;          |mult_25t:auto_generated|                ; 17 (17)           ; 0 (0)        ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2bot|VEL_CONTROL:inst52|lpm_mult:Mult3|mult_25t:auto_generated                                                                                       ;              ;
 ;    |altpll0:inst|                                 ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|altpll0:inst                                                                                                                                    ;              ;
 ;       |altpll:altpll_component|                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|altpll0:inst|altpll:altpll_component                                                                                                            ;              ;
-;    |altpll1:inst11|                               ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|altpll1:inst11                                                                                                                                  ; work         ;
-;       |altpll:altpll_component|                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|altpll1:inst11|altpll:altpll_component                                                                                                          ;              ;
+;    |altpll1:inst11|                               ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|altpll1:inst11                                                                                                                                  ;              ;
+;       |altpll:altpll_component|                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|altpll1:inst11|altpll:altpll_component                                                                                                          ; work         ;
 ;    |oneshot_i2c:inst18|                           ; 93 (0)            ; 46 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|oneshot_i2c:inst18                                                                                                                              ; work         ;
 ;       |i2c_master:inst|                           ; 51 (51)           ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|oneshot_i2c:inst18|i2c_master:inst                                                                                                              ; work         ;
 ;       |i2c_oneshot_ctrl:inst3|                    ; 42 (42)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2bot|oneshot_i2c:inst18|i2c_oneshot_ctrl:inst3                                                                                                       ; work         ;
@@ -675,7 +675,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; DAC_BEEP:inst35|altsyncram:SOUND_LUT|altsyncram_pmk3:auto_generated|ALTSYNCRAM                                                    ; AUTO ; ROM              ; 512          ; 16           ; --           ; --           ; 8192  ; SOUND.mif     ;
 ; ODOMETRY:inst53|altsyncram:COS_LUT|altsyncram_r5l3:auto_generated|ALTSYNCRAM                                                      ; AUTO ; ROM              ; 2048         ; 16           ; --           ; --           ; 32768 ; COS_table.mif ;
 ; ODOMETRY:inst53|altsyncram:SIN_LUT|altsyncram_06l3:auto_generated|ALTSYNCRAM                                                      ; AUTO ; ROM              ; 2048         ; 16           ; --           ; --           ; 32768 ; SIN_table.mif ;
-; SCOMP:inst8|altsyncram:MEMORY|altsyncram_nrs3:auto_generated|ALTSYNCRAM                                                           ; AUTO ; Single Port      ; 2048         ; 16           ; --           ; --           ; 32768 ; 11-12_2.mif   ;
+; SCOMP:inst8|altsyncram:MEMORY|altsyncram_ors3:auto_generated|ALTSYNCRAM                                                           ; AUTO ; Single Port      ; 2048         ; 16           ; --           ; --           ; 32768 ; 11-12_3.mif   ;
 ; UART_INTERFACE:inst1|uart_dcfifo_in:inst8|dcfifo:dcfifo_component|dcfifo_qtl1:auto_generated|altsyncram_9hu:fifo_ram|ALTSYNCRAM   ; AUTO ; Simple Dual Port ; 32           ; 8            ; 32           ; 8            ; 256   ; None          ;
 ; UART_INTERFACE:inst1|uart_dcfifo_out:inst14|dcfifo:dcfifo_component|dcfifo_31m1:auto_generated|altsyncram_bhu:fifo_ram|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 64           ; 8            ; 64           ; 8            ; 512   ; None          ;
 +-----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+---------------+
@@ -1339,7 +1339,7 @@ Encoding Type:  One-Hot
 
 
 +-------------------------------------------------------------------------------------+
-; Source assignments for SCOMP:inst8|altsyncram:MEMORY|altsyncram_nrs3:auto_generated ;
+; Source assignments for SCOMP:inst8|altsyncram:MEMORY|altsyncram_ors3:auto_generated ;
 +---------------------------------+--------------------+------+-----------------------+
 ; Assignment                      ; Value              ; From ; To                    ;
 +---------------------------------+--------------------+------+-----------------------+
@@ -2133,7 +2133,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped        ;
 ; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
 ; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
-; INIT_FILE                          ; 11-12_2.mif          ; Untyped        ;
+; INIT_FILE                          ; 11-12_3.mif          ; Untyped        ;
 ; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped        ;
 ; MAXIMUM_DEPTH                      ; 0                    ; Signed Integer ;
 ; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped        ;
@@ -2144,7 +2144,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped        ;
 ; ENABLE_ECC                         ; FALSE                ; Untyped        ;
 ; DEVICE_FAMILY                      ; Cyclone II           ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_nrs3      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_ors3      ; Untyped        ;
 +------------------------------------+----------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -4540,7 +4540,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
-    Info: Processing started: Tue Nov 12 17:26:51 2019
+    Info: Processing started: Tue Nov 12 17:44:42 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file ir_rcvr.bdf
@@ -4763,7 +4763,7 @@ Info: Instantiated megafunction "SCOMP:inst8|altsyncram:MEMORY" with the followi
     Info: Parameter "indata_aclr_a" = "NONE"
     Info: Parameter "indata_aclr_b" = "NONE"
     Info: Parameter "indata_reg_b" = "CLOCK1"
-    Info: Parameter "init_file" = "11-12_2.mif"
+    Info: Parameter "init_file" = "11-12_3.mif"
     Info: Parameter "init_file_layout" = "PORT_A"
     Info: Parameter "maximum_depth" = "0"
     Info: Parameter "numwords_a" = "2048"
@@ -4792,10 +4792,10 @@ Info: Instantiated megafunction "SCOMP:inst8|altsyncram:MEMORY" with the followi
     Info: Parameter "wrcontrol_wraddress_reg_b" = "CLOCK1"
     Info: Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info: Parameter "lpm_type" = "altsyncram"
-Info: Found 1 design units, including 1 entities, in source file db/altsyncram_nrs3.tdf
-    Info: Found entity 1: altsyncram_nrs3
-Info: Elaborating entity "altsyncram_nrs3" for hierarchy "SCOMP:inst8|altsyncram:MEMORY|altsyncram_nrs3:auto_generated"
-Warning: 556 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 556 warnings found, and 10 warnings are reported.
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_ors3.tdf
+    Info: Found entity 1: altsyncram_ors3
+Info: Elaborating entity "altsyncram_ors3" for hierarchy "SCOMP:inst8|altsyncram:MEMORY|altsyncram_ors3:auto_generated"
+Warning: 548 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 548 warnings found, and 10 warnings are reported.
     Warning: Memory Initialization File address 0 is reinitialized
     Warning: Memory Initialization File address 1 is reinitialized
     Warning: Memory Initialization File address 2 is reinitialized
@@ -5830,8 +5830,8 @@ Info: Implemented 6350 device resources after synthesis - the final resource cou
     Info: Implemented 42 DSP elements
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 134 warnings
     Info: Peak virtual memory: 4577 megabytes
-    Info: Processing ended: Tue Nov 12 17:27:13 2019
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Processing ended: Tue Nov 12 17:45:06 2019
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:21
 
 

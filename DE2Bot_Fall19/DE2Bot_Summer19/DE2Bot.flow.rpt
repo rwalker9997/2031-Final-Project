@@ -1,5 +1,5 @@
 Flow report for DE2Bot
-Tue Nov 12 17:36:51 2019
+Tue Nov 12 17:53:24 2019
 Quartus II 64-Bit Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Flow Summary                                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Flow Status                        ; Successful - Tue Nov 12 17:36:51 2019         ;
+; Flow Status                        ; Successful - Tue Nov 12 17:53:24 2019         ;
 ; Quartus II 64-Bit Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Full Version ;
 ; Revision Name                      ; DE2Bot                                        ;
 ; Top-level Entity Name              ; DE2bot                                        ;
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/12/2019 17:26:51 ;
+; Start date & time ; 11/12/2019 17:44:43 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE2Bot              ;
 +-------------------+---------------------+
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                          ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 26830026489388.157359761101632 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 26830026489388.157359868310268 ; --            ; --          ; --             ;
 ; ENABLE_CLOCK_LATENCY                ; On                             ; Off           ; --          ; --             ;
 ; IP_TOOL_NAME                        ; LPM_FF                         ; --            ; --          ; --             ;
 ; IP_TOOL_VERSION                     ; 9.1                            ; --            ; --          ; --             ;
@@ -98,18 +98,18 @@ applicable agreement for further details.
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis    ; 00:00:22     ; 1.0                     ; 4577 MB             ; 00:00:20                           ;
-; Fitter                  ; 00:00:24     ; 2.6                     ; 4636 MB             ; 00:00:37                           ;
+; Fitter                  ; 00:00:24     ; 2.5                     ; 4648 MB             ; 00:00:37                           ;
 ; Assembler               ; 00:00:02     ; 1.0                     ; 4483 MB             ; 00:00:02                           ;
 ; Classic Timing Analyzer ; 00:00:03     ; 1.0                     ; 4451 MB             ; 00:00:03                           ;
 ; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 4476 MB             ; 00:00:01                           ;
 ; Assembler               ; 00:00:03     ; 1.0                     ; 4485 MB             ; 00:00:02                           ;
 ; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 4476 MB             ; 00:00:01                           ;
 ; Assembler               ; 00:00:02     ; 1.0                     ; 4485 MB             ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 4476 MB             ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 4485 MB             ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 4476 MB             ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 4485 MB             ; 00:00:02                           ;
-; Total                   ; 00:01:08     ; --                      ; --                  ; 00:01:14                           ;
+; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 4476 MB             ; 00:00:01                           ;
+; Assembler               ; 00:00:02     ; 1.0                     ; 4485 MB             ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 4476 MB             ; 00:00:01                           ;
+; Assembler               ; 00:00:02     ; 1.0                     ; 4485 MB             ; 00:00:02                           ;
+; Total                   ; 00:01:04     ; --                      ; --                  ; 00:01:14                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

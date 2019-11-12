@@ -1,5 +1,5 @@
 Fitter report for DE2Bot
-Tue Nov 12 17:27:38 2019
+Tue Nov 12 17:45:31 2019
 Quartus II 64-Bit Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
 
 
@@ -68,7 +68,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                     ;
 +------------------------------------+-----------------------------------------------+
-; Fitter Status                      ; Successful - Tue Nov 12 17:27:38 2019         ;
+; Fitter Status                      ; Successful - Tue Nov 12 17:45:31 2019         ;
 ; Quartus II 64-Bit Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Full Version ;
 ; Revision Name                      ; DE2Bot                                        ;
 ; Top-level Entity Name              ; DE2bot                                        ;
@@ -149,12 +149,12 @@ applicable agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 2.64        ;
+; Average used               ; 2.46        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     1 processor            ; 100.0%      ;
-;     2-4 processors         ;  23.1%      ;
+;     2-4 processors         ;  19.2%      ;
 +----------------------------+-------------+
 
 
@@ -1364,12 +1364,12 @@ Note: User assignments will override these defaults. The user specified values a
 ;    |SAFETY_ENABLE:inst4|                          ; 3 (3)       ; 2 (2)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 2 (2)            ; |DE2bot|SAFETY_ENABLE:inst4                                                                                                                             ;              ;
 ;    |SCOMP:inst8|                                  ; 576 (493)   ; 227 (227)                 ; 0 (0)         ; 32768       ; 8    ; 0            ; 0       ; 0         ; 0    ; 0            ; 349 (266)    ; 38 (38)           ; 189 (189)        ; |DE2bot|SCOMP:inst8                                                                                                                                     ;              ;
 ;       |altsyncram:MEMORY|                         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 32768       ; 8    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|SCOMP:inst8|altsyncram:MEMORY                                                                                                                   ;              ;
-;          |altsyncram_nrs3:auto_generated|         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 32768       ; 8    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|SCOMP:inst8|altsyncram:MEMORY|altsyncram_nrs3:auto_generated                                                                                    ;              ;
+;          |altsyncram_ors3:auto_generated|         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 32768       ; 8    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|SCOMP:inst8|altsyncram:MEMORY|altsyncram_ors3:auto_generated                                                                                    ;              ;
 ;       |lpm_clshift:SHIFTER|                       ; 83 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 83 (0)       ; 0 (0)             ; 0 (0)            ; |DE2bot|SCOMP:inst8|lpm_clshift:SHIFTER                                                                                                                 ;              ;
 ;          |lpm_clshift_fuc:auto_generated|         ; 83 (83)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 83 (83)      ; 0 (0)             ; 0 (0)            ; |DE2bot|SCOMP:inst8|lpm_clshift:SHIFTER|lpm_clshift_fuc:auto_generated                                                                                  ;              ;
 ;    |SLCD:inst55|                                  ; 90 (90)     ; 49 (49)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 41 (41)      ; 5 (5)             ; 44 (44)          ; |DE2bot|SLCD:inst55                                                                                                                                     ;              ;
 ;    |SONAR:inst54|                                 ; 653 (653)   ; 344 (344)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 305 (305)    ; 25 (25)           ; 323 (315)        ; |DE2bot|SONAR:inst54                                                                                                                                    ;              ;
-;       |lpm_bustri:IO_BUS|                         ; 8 (8)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 8 (8)            ; |DE2bot|SONAR:inst54|lpm_bustri:IO_BUS                                                                                                                  ; work         ;
+;       |lpm_bustri:IO_BUS|                         ; 8 (8)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 8 (8)            ; |DE2bot|SONAR:inst54|lpm_bustri:IO_BUS                                                                                                                  ;              ;
 ;    |TIMER:inst20|                                 ; 34 (33)     ; 16 (16)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (17)      ; 1 (1)             ; 16 (8)           ; |DE2bot|TIMER:inst20                                                                                                                                    ;              ;
 ;       |lpm_bustri:IO_BUS|                         ; 8 (8)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 8 (8)            ; |DE2bot|TIMER:inst20|lpm_bustri:IO_BUS                                                                                                                  ;              ;
 ;    |UART_INTERFACE:inst1|                         ; 316 (7)     ; 244 (0)                   ; 0 (0)         ; 768         ; 2    ; 0            ; 0       ; 0         ; 0    ; 0            ; 71 (6)       ; 78 (0)            ; 167 (1)          ; |DE2bot|UART_INTERFACE:inst1                                                                                                                            ;              ;
@@ -1445,8 +1445,8 @@ Note: User assignments will override these defaults. The user specified values a
 ;          |mult_25t:auto_generated|                ; 17 (17)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 4            ; 0       ; 2         ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; |DE2bot|VEL_CONTROL:inst52|lpm_mult:Mult3|mult_25t:auto_generated                                                                                       ;              ;
 ;    |altpll0:inst|                                 ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|altpll0:inst                                                                                                                                    ;              ;
 ;       |altpll:altpll_component|                   ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|altpll0:inst|altpll:altpll_component                                                                                                            ;              ;
-;    |altpll1:inst11|                               ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|altpll1:inst11                                                                                                                                  ; work         ;
-;       |altpll:altpll_component|                   ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|altpll1:inst11|altpll:altpll_component                                                                                                          ;              ;
+;    |altpll1:inst11|                               ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|altpll1:inst11                                                                                                                                  ;              ;
+;       |altpll:altpll_component|                   ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |DE2bot|altpll1:inst11|altpll:altpll_component                                                                                                          ; work         ;
 ;    |oneshot_i2c:inst18|                           ; 96 (0)      ; 46 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 50 (0)       ; 3 (0)             ; 43 (0)           ; |DE2bot|oneshot_i2c:inst18                                                                                                                              ; work         ;
 ;       |i2c_master:inst|                           ; 54 (54)     ; 28 (28)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 26 (26)      ; 3 (3)             ; 25 (25)          ; |DE2bot|oneshot_i2c:inst18|i2c_master:inst                                                                                                              ; work         ;
 ;       |i2c_oneshot_ctrl:inst3|                    ; 42 (42)     ; 18 (18)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 24 (24)      ; 0 (0)             ; 18 (18)          ; |DE2bot|oneshot_i2c:inst18|i2c_oneshot_ctrl:inst3                                                                                                       ; work         ;
@@ -2098,7 +2098,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; DAC_BEEP:inst35|altsyncram:SOUND_LUT|altsyncram_pmk3:auto_generated|ALTSYNCRAM                                                    ; AUTO ; ROM              ; Single Clock ; 512          ; 16           ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 8192  ; 512                         ; 16                          ; --                          ; --                          ; 8192                ; 2    ; SOUND.mif     ; M4K_X13_Y35, M4K_X13_Y34                                                                               ;
 ; ODOMETRY:inst53|altsyncram:COS_LUT|altsyncram_r5l3:auto_generated|ALTSYNCRAM                                                      ; AUTO ; ROM              ; Single Clock ; 2048         ; 16           ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 32768 ; 2048                        ; 16                          ; --                          ; --                          ; 32768               ; 8    ; COS_table.mif ; M4K_X26_Y12, M4K_X52_Y12, M4K_X26_Y13, M4K_X52_Y13, M4K_X26_Y11, M4K_X52_Y11, M4K_X13_Y12, M4K_X52_Y10 ;
 ; ODOMETRY:inst53|altsyncram:SIN_LUT|altsyncram_06l3:auto_generated|ALTSYNCRAM                                                      ; AUTO ; ROM              ; Single Clock ; 2048         ; 16           ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 32768 ; 2048                        ; 16                          ; --                          ; --                          ; 32768               ; 8    ; SIN_table.mif ; M4K_X52_Y8, M4K_X26_Y8, M4K_X52_Y7, M4K_X26_Y9, M4K_X52_Y9, M4K_X26_Y7, M4K_X13_Y8, M4K_X26_Y10        ;
-; SCOMP:inst8|altsyncram:MEMORY|altsyncram_nrs3:auto_generated|ALTSYNCRAM                                                           ; AUTO ; Single Port      ; Single Clock ; 2048         ; 16           ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 32768 ; 2048                        ; 16                          ; --                          ; --                          ; 32768               ; 8    ; 11-12_2.mif   ; M4K_X26_Y15, M4K_X26_Y14, M4K_X26_Y16, M4K_X26_Y17, M4K_X52_Y15, M4K_X52_Y17, M4K_X52_Y14, M4K_X52_Y16 ;
+; SCOMP:inst8|altsyncram:MEMORY|altsyncram_ors3:auto_generated|ALTSYNCRAM                                                           ; AUTO ; Single Port      ; Single Clock ; 2048         ; 16           ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 32768 ; 2048                        ; 16                          ; --                          ; --                          ; 32768               ; 8    ; 11-12_3.mif   ; M4K_X26_Y15, M4K_X26_Y14, M4K_X26_Y16, M4K_X26_Y17, M4K_X52_Y15, M4K_X52_Y17, M4K_X52_Y14, M4K_X52_Y16 ;
 ; UART_INTERFACE:inst1|uart_dcfifo_in:inst8|dcfifo:dcfifo_component|dcfifo_qtl1:auto_generated|altsyncram_9hu:fifo_ram|ALTSYNCRAM   ; AUTO ; Simple Dual Port ; Dual Clocks  ; 32           ; 8            ; 32           ; 8            ; yes                    ; no                      ; yes                    ; no                      ; 256   ; 32                          ; 8                           ; 32                          ; 8                           ; 256                 ; 1    ; None          ; M4K_X52_Y18                                                                                            ;
 ; UART_INTERFACE:inst1|uart_dcfifo_out:inst14|dcfifo:dcfifo_component|dcfifo_31m1:auto_generated|altsyncram_bhu:fifo_ram|ALTSYNCRAM ; AUTO ; Simple Dual Port ; Dual Clocks  ; 64           ; 8            ; 64           ; 8            ; yes                    ; no                      ; yes                    ; no                      ; 512   ; 64                          ; 8                           ; 64                          ; 8                           ; 512                 ; 1    ; None          ; M4K_X52_Y19                                                                                            ;
 +-----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+-------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+---------------+--------------------------------------------------------------------------------------------------------+
@@ -2405,7 +2405,7 @@ This will disable optimization of problematic paths and expose them for further 
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Fitter
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
-    Info: Processing started: Tue Nov 12 17:27:14 2019
+    Info: Processing started: Tue Nov 12 17:45:07 2019
 Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off DE2Bot -c DE2Bot
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Selected device EP2C35F672C6 for design "DE2Bot"
@@ -2489,7 +2489,7 @@ Info: Starting register packing
 Info: Finished register packing
     Extra Info: No registers were packed into other blocks
 Warning: PLL "altpll1:inst11|altpll:altpll_component|pll" output port clk[1] feeds output pin "AUD_XCK" via non-dedicated routing -- jitter performance depends on switching rate of other design elements. Use PLL dedicated clock outputs to ensure jitter performance
-Info: Fitter preparation operations ending: elapsed time is 00:00:02
+Info: Fitter preparation operations ending: elapsed time is 00:00:03
 Info: Fitter placement preparation operations beginning
 Info: Fitter placement preparation operations ending: elapsed time is 00:00:01
 Info: Fitter placement operations beginning
@@ -2642,9 +2642,9 @@ Info: Delay annotation completed successfully
 Info: Design uses memory blocks. Violating setup or hold times of memory block address registers for either read or write operations could cause memory contents to be corrupted. Make sure that all memory block address registers meet the setup and hold time requirements.
 Info: Generated suppressed messages file C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/DE2Bot.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4636 megabytes
-    Info: Processing ended: Tue Nov 12 17:27:41 2019
-    Info: Elapsed time: 00:00:27
+    Info: Peak virtual memory: 4648 megabytes
+    Info: Processing ended: Tue Nov 12 17:45:33 2019
+    Info: Elapsed time: 00:00:26
     Info: Total CPU time (on all processors): 00:00:38
 
 
