@@ -74,78 +74,46 @@ Main:
 	; If you want to take manual control of the robot,
 	; execute CLI &B0010 to disable the timer interrupt.
 	
-	
-	CALL MoveTwoFeet
-	CALL Rotate90
-	CALL MoveTwoFeet
-	CALL Rotate90
-	CALL MoveTwoFeet
-	CALL Rotate90
-	CALL MoveTwoFeet
-	CALL Rotate90
-; 	CALL Rotate270 ; turn right
-; 	CALL MoveTwoFeet
-; 	CALL Rotate270 ; turn right
-; 	CALL MoveTwoFeet 
-; 	CALL Rotate270 ; turn right
-; 	CALL MoveTwoFeet
+	LOAD	Mask5
+	OUT 	SONAREN 	; enable sensor 5
+	IN 		DIST5 		; reads distance of sensor 5 in mm
+	ADDI 	-610 		; 610mm = 2ft
+	JNEG 	Circle 		; if distance - 2ft < 0, reflector is 2ft away therefore go circle
+Path:
+	LOAD	FFast 		; else, continue to drive forware
+	STORE	DVel
+	LOAD 	Zero
+	STORE 	DTheta
 	
 	
 	JUMP	InfLoop
 	;LOAD   Zero
-	;STORE  DTheta      ; use API to get robot to face 0 degrees
+	;STORE  DTheta 		; use API to get robot to face 0 degrees
 	LOADI	&B00011110
 	OUT		SONAREN
-TestLoop:
-	IN		DIST2
-	;SHIFT	-8
-	;STORE	Temp
-	;IN		DIST1
-	;AND		HiByte
-	;OR		Temp
-	OUT		SSEG2
-	
-	IN		DIST1 
-	;SHIFT	-8
-	;STORE	Temp
-	;IN		DIST3
-	;AND		HiByte
-	;OR		Temp
-	OUT		SSEG1
-	JUMP 	TestLoop
+
+Circle:
+	CALL MoveTwoFeet
+	CALL Rotate90
+	CALL MoveTwoFeet
+	CALL Rotate90
+	CALL MoveTwoFeet
+	CALL Rotate90
+	CALL MoveTwoFeet
+	CALL Rotate90
+	JUMP Path 
 	
 Rotate90:
+	CALL ResetAll
 	LOAD  Deg90
 	STORE DTheta
 Loop90:
 	IN Theta
 	SUB Deg90
-	CALL ABS 		; abs(current - 90)
+	CALL ABS 			; abs(current - 90)
 	ADDI -3 			; error - 3
-	JPOS Loop90	; if still positive, error is too large, so check again
-
-; 	LOAD RSlow
-; 	OUT LVELCMD ; desired velocity of teh left wheel
-; 	LOAD FSlow
-; 	OUT RVELCMD ; desired velocity of teh right wheel
-	;reset your position
-	CALL ResetAll
-	RETURN
-	
-Rotate180:
-	LOAD  Deg180
-	STORE DTheta
-	IN Theta
-	SUB Deg180
-	CALL ABS 		; abs(current - 90)
-	SUB 3 			; error - 3
-	JPOS Rotate180	; if still positive, error is too large, so check again
-
-; 	LOAD RSlow
-; 	OUT LVELCMD ; desired velocity of teh left wheel
-; 	LOAD FSlow
-; 	OUT RVELCMD ; desired velocity of teh right wheel
-	;reset your position
+	JPOS Loop90			; if still positive, error is too large, so check again
+	;CALL ResetAll
 	RETURN
 
 ResetAll:
@@ -154,23 +122,22 @@ ResetAll:
 	STORE DVel
 	OUT RESETPOS
 	RETURN
-	
 
 Rotate270:
+	LOAD  Deg270
+	STORE DTheta
+Loop270:
 	IN Theta
 	SUB Deg270
-	CALL ABS
-	SUB 3
-	JPOS Rotate270
-	LOAD RSlow
-	OUT LVELCMD ; desired velocity of teh left wheel
-	LOAD FSlow
-	OUT RVELCMD ; desired velocity of teh right wheel
-	RETURN 
+	CALL ABS 			; abs(current - 270)
+	ADDI -3 			; error - 3
+	JPOS Loop270		; if still positive, error is too large, so check again
+	CALL ResetAll
+	RETURN
 	
 MoveTwoFeet:
 	Load FFast
-	STORE DVel ; api to move forward
+	STORE DVel 			; api to move forward
 	CALL Wait15
 	CALL ResetAll
 	RETURN
@@ -184,11 +151,10 @@ Stop:
 movFwd:
 	LOADI	&H1010
 	OUT		SSEG2
-	;JUMP SensLoop
 	IN		Theta
 	STORE	DTheta 		; stop turning
-	;LOAD	FMid
-	;STORE	DVel		; move forward
+	LOAD	FMid
+	STORE	DVel		; move forward
 
 InfLoop: 
 	JUMP   InfLoop
