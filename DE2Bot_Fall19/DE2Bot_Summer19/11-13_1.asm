@@ -138,7 +138,7 @@ Loop270:
 MoveTwoFeet:
 	Load FFast
 	STORE DVel 			; api to move forward
-	CALL Wait15
+	CALL Wait45
 	CALL ResetAll
 	RETURN
 
@@ -681,13 +681,22 @@ Wloop:
 	JNEG   Wloop
 	RETURN
 	
-Wait15:
+Wait15: 			   ; approximately travels for 2ft
 	OUT    TIMER
 Wloop15:
 	IN     TIMER
 	OUT    XLEDS       ; User-feedback that a pause is occurring.
-	ADDI   -15         ; 1 second at 10Hz.
+	ADDI   -15         ; 1.5 second at 10Hz.
 	JNEG   Wloop15
+	RETURN
+
+Wait45: 			   ; approximately travels for 6ft
+	OUT    TIMER
+Wloop45:
+	IN     TIMER
+	OUT    XLEDS       ; User-feedback that a pause is occurring.
+	ADDI   -45         ; 4.5 second at 10Hz.
+	JNEG   Wloop45
 	RETURN
 
 ; This subroutine will get the battery voltage,
