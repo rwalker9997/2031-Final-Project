@@ -1,6 +1,6 @@
 MIF/HEX Update report for DE2Bot
-Tue Nov 12 17:53:16 2019
-Quartus II 64-Bit Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
+Thu Nov 14 16:56:50 2019
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
 
 
 ---------------------
@@ -35,7 +35,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
-; MIF/HEX Update Status ; Successful - Tue Nov 12 17:53:16 2019 ;
+; MIF/HEX Update Status ; Successful - Thu Nov 14 16:56:50 2019 ;
 ; Revision Name         ; DE2Bot                                ;
 ; Top-level Entity Name ; DE2bot                                ;
 ; Family                ; Cyclone II                            ;
@@ -48,7 +48,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------------------+
 ; File Name                                                                                 ;
 +-------------------------------------------------------------------------------------------+
-; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/11-12_3.mif   ;
+; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/11-14_2.mif   ;
 ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/cos_table.mif ;
 ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/sin_table.mif ;
 ; C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/sound.mif     ;
@@ -59,11 +59,11 @@ applicable agreement for further details.
 ; MIF/HEX Update Messages ;
 +-------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit MIF/HEX Update
+Info: Running Quartus II MIF/HEX Update
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
-    Info: Processing started: Tue Nov 12 17:53:15 2019
+    Info: Processing started: Thu Nov 14 16:56:49 2019
 Info: Command: quartus_cdb DE2Bot -c DE2Bot --update_mif
-Warning: 562 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 562 warnings found, and 10 warnings are reported.
+Warning: 598 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 598 warnings found, and 10 warnings are reported.
     Warning: Memory Initialization File address 0 is reinitialized
     Warning: Memory Initialization File address 1 is reinitialized
     Warning: Memory Initialization File address 2 is reinitialized
@@ -75,13 +75,13 @@ Warning: 562 out of 2048 addresses are reinitialized. The latest initialized dat
     Warning: Memory Initialization File address 8 is reinitialized
     Warning: Memory Initialization File address 9 is reinitialized
 Info: Processed the following Memory Initialization File(s)
-    Info: Processed Memory Initialization File C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/11-12_3.mif
+    Info: Processed Memory Initialization File C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/11-14_2.mif
     Info: Processed Memory Initialization File C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/cos_table.mif
     Info: Processed Memory Initialization File C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/sin_table.mif
     Info: Processed Memory Initialization File C:/Users/clee654/Documents/2031-Final-Project/DE2Bot_Fall19/DE2Bot_Summer19/sound.mif
-Info: Quartus II 64-Bit MIF/HEX Update was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4476 megabytes
-    Info: Processing ended: Tue Nov 12 17:53:16 2019
+Info: Quartus II MIF/HEX Update was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 257 megabytes
+    Info: Processing ended: Thu Nov 14 16:56:50 2019
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
