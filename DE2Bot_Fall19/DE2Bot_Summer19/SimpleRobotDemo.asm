@@ -74,17 +74,90 @@ Main:
 	; If you want to take manual control of the robot,
 	; execute CLI &B0010 to disable the timer interrupt.
 	
-	LOADI  90
-	STORE  DTheta      ; use API to get robot to face 90 degrees
-TurnLoop:
-	IN     Theta
-	ADDI   -90
-	CALL   Abs         ; get abs(currentAngle - 90)
-	ADDI   -3
-	JPOS   TurnLoop    ; if angle error > 3, keep checking
-	; at this point, robot should be within 3 degrees of 90
-	LOAD   FMid
-	STORE  DVel        ; use API to move forward
+	
+	CALL Rotate90
+	CALL MoveTwoFeet
+	CALL Rotate270
+	CALL MoveTwoFeet
+	CALL Rotate270
+	CALL MoveTwoFeet
+	CALL Rotate270
+	CALL MoveTwoFeet
+	
+	
+	JUMP	InfLoop
+	;LOAD   Zero
+	;STORE  DTheta      ; use API to get robot to face 0 degrees
+	LOADI	&B00011110
+	OUT		SONAREN
+TestLoop:
+	IN		DIST2
+	;SHIFT	-8
+	;STORE	Temp
+	;IN		DIST1
+	;AND		HiByte
+	;OR		Temp
+	OUT		SSEG2
+	
+	IN		DIST1 
+	;SHIFT	-8
+	;STORE	Temp
+	;IN		DIST3
+	;AND		HiByte
+	;OR		Temp
+	OUT		SSEG1
+	JUMP 	TestLoop
+	
+Rotate90:
+	LOAD RSlow
+	OUT LVELCMD ; desired velocity of teh left wheel
+	LOAD FSlow
+	OUT RVELCMD ; desired velocity of teh right wheel
+	IN Theta
+	OUT SSEG1 ; segment display 1
+	SUB Deg90
+	OUT SSEG2 ; segment display 2
+	CALL ABS
+	SUB -3
+	JPOS Rotate90
+	;reset your position
+	RETURN
+
+Rotate270:
+	LOAD RSlow
+	OUT LVELCMD ; desired velocity of teh left wheel
+	LOAD FSlow
+	OUT RVELCMD ; desired velocity of teh right wheel
+	IN Theta
+	OUT SSEG1 ; segment display 1
+	SUB Deg270
+	CALL ABS
+	SUB -3
+	JPOS Rotate270
+	;reset your position
+	OUT SSEG2 ; segment display 2
+	RETURN 
+
+
+MoveTwoFeet:
+	Load FFast
+	STORE DVel ; api to move forward
+	CALL Wait1
+	LOAD ZERO
+	STORE LVElCMD
+	STORE RVELCMD
+	STORE DTheta
+	RETURN
+
+	
+movFwd:
+	LOADI	&H1010
+	OUT		SSEG2
+	;JUMP SensLoop
+	IN		Theta
+	STORE	DTheta 		; stop turning
+	;LOAD	FMid
+	;STORE	DVel		; move forward
 
 InfLoop: 
 	JUMP   InfLoop
@@ -92,7 +165,12 @@ InfLoop:
 	; infinite loop, because it uses the timer interrupt, so the
 	; robot will continue to attempt to match DTheta and DVel
 	
-	
+Straight:
+	LOAD	FFast
+	STORE	DVel
+	LOAD 	Zero
+	STORE 	DTheta
+	RETURN
 
 Die:
 ; Sometimes it's useful to permanently stop execution.
@@ -108,7 +186,28 @@ Die:
 Forever:
 	JUMP   Forever     ; Do this forever.
 	DEAD:  DW &HDEAD   ; Example of a "local" variable
-
+	
+	
+; Subroutine for testing sonars
+; Outputs sonar to SSEG
+SonarTest:
+	IN		DIST2
+	SHIFT	-8
+	STORE	Temp
+	IN		DIST1
+	AND		HiByte
+	OR		Temp
+	OUT		SSEG2
+	
+	IN		DIST1 
+	SHIFT	-8
+	STORE	Temp
+	IN		DIST3
+	AND		HiByte
+	OR		Temp
+	OUT		SSEG1
+	
+	JUMP SonarTest
 
 ; Timer ISR.  Currently just calls the movement control code.
 ; You could, however, do additional tasks here if desired.
@@ -691,6 +790,7 @@ Mask4:    DW &B00010000
 Mask5:    DW &B00100000
 Mask6:    DW &B01000000
 Mask7:    DW &B10000000
+HiByte:	  DW &HFF00
 LowByte:  DW &HFF      ; binary 00000000 1111111
 LowNibl:  DW &HF       ; 0000 0000 0000 1111
 
