@@ -77,36 +77,29 @@ Main:
 	LOAD 	Zero
 	STORE 	DTheta	
 	
-	LOAD 	MASK0	
-	OUT 	SONAREN 	; enable snesor
-	
-	
 	LOAD   Ft3
 	OUT SONALARM
-	CALL EnableAllFront
-	CALL ResetAll
-	CALL Forward
+	
 
 Path:
-	IN 		SONALARM
-	AND 	Mask1234
-	ADDI 	-30
-	JNEG 	Front
-	CALL	IsAWall
-	JUMP 	Path
+	CALL    EnableAllFront ;enable sensors and interupts 1-4
+	CALL    ResetAll       ;reset pos, theta = 0
+	CALL 	Forward        ;Dvel = FFAST
+	IN 		SONALARM       ; Read in 8 bit signal from sonar
+	AND 	Mask1234       ;And with  00011110, will equal 30 if wall, if less not a wall
+	ADDI 	-30            ; 30 is max value(wall), if less it will be a reflector
+	JNEG 	Front          ; A reflector os seen check the front
+	CALL	IsAWall        ; a wall was seen move and rotate to adjust
+	JUMP 	Path           ; resume forward motion by jumping back to path
 
 Front:	
-	LOADI   &HAAAA
-	OUT     SSEG1
-	IN 		SONALARM
-	AND 	Mask23
-	JZERO 	LeftSide
+	IN 		SONALARM       ; Something was detected, check sensors 2 and 3 first (front sensors)
+	AND 	Mask23         ; and with 00001100
+	JZERO 	LeftSide       ; 
 	CALL  	CircleForward
 	JUMP  	Path
 
 LeftSide:
-	LOADI   &HBBBB
-	OUT     SSEG1
 	IN 		SONALARM
 	AND	    Mask1
 	JZERO	RightSide
@@ -114,8 +107,6 @@ LeftSide:
 	JUMP 	PATH
 
 RightSide:
-	LOADI   &HCCCC
-	OUT     SSEG1
 	IN 		SONALARM
 	AND		Mask4
 	JZERO	Path
@@ -783,6 +774,7 @@ Mask1234:  DW &B00011110
 ; some useful movement values
 OneMeter: DW 961       ; ~1m in 1.04mm units
 HalfMeter: DW 481      ; ~0.5m in 1.04mm units
+Ft1:	  DW 298
 Ft2:      DW 586       ; ~2ft in 1.04mm units
 Ft3:      DW 879
 Ft4:      DW 1172
@@ -983,18 +975,21 @@ Straight:
 	
 
 CircleLeft:
-    LOADI   &H2222
-	OUT     SSEG1
 	LOADI	&B00000001
 	OUT		SONARINT
-	
+	OUT     SONAREN
+	LOAD	Ft2
+	OUT 	SONALARM
+
 	LOAD	FFast 		; else, continue to drive forware
 	STORE	DVel
+	
+DetectLoop0:	
 	IN		SONALARM 	;sonar alarm detect 1 else 0
+	JZERO	DetectLoop0
 
 	CALL	MoveOneFeet
 	CALL	Rotate90
-	
 	LOAD	FFast
 	STORE	DVel
 
@@ -1040,20 +1035,24 @@ DetectLoop4:
 	
 	
 CircleRight:
-    LOADI   &H1111
-	OUT     SSEG1
 	LOADI	&B00100000
 	OUT		SONARINT
+	OUT     SONAREN
+	LOAD	Ft2
+	OUT		SONALARM
 	
 	LOAD	FFast 		; else, continue to drive forware
 	STORE	DVel
+
+DetectRLoop0:	
 	IN		SONALARM 	;sonar alarm detect 1 else 0
+	JZERO	DetectRLoop0
 
 	CALL	MoveOneFeet
 	CALL	Rotate270
-	
 	LOAD	FFast
 	STORE	DVel
+
 
 DetectRLoop1:
 	IN		SONALARM
@@ -1096,10 +1095,13 @@ DetectRLoop4:
 	
 
 CircleForward:
-	LOADI   &H0000
-	OUT     SSEG1
-	LOADI	&B00100000
-	OUT		SONARINT
+	CALL	SonarFrontM
+	LOAD	Ft1
+	OUT		SONALARM
+	
+DetectFLoop0:
+	IN 		SONALARM
+	JZERO	DetectFLoop0
 
 	CALL	Rotate90
 
@@ -1108,56 +1110,63 @@ CircleForward:
 	
 	LOAD	FFast
 	STORE	DVel
+	
+	CALL  	CircleRight
+	
+; 	LOADI	&B00100000 		;Essentially CircleRight, replaced above
+; 	OUT		SONARINT		;Kept for debug purposes
+; 	OUT     SONAREN
+; 	LOADI	
+; 
+; DetectFLoop1:
+; 	IN		SONALARM
+; 	JZERO	DetectFLoop1
+; 	
+; 	CALL	MoveOneFeet
+; 	CALL 	Rotate270
+; 	LOAD	FFast
+; 	STORE	DVel
+; 	
+; DetectFLoop2:
+; 	IN		SONALARM
+; 	JZERO	DetectFLoop2
+; 	
+; 	CALL	MoveOneFeet
+; 	CALL 	Rotate270
+; 	LOAD	FFast
+; 	STORE	DVel
+; 
+; DetectFLoop3:
+; 	IN		SONALARM
+; 	JZERO	DetectFLoop3
+; 	
+; 	CALL	MoveOneFeet
+; 	CALL 	Rotate270
+; 	LOAD	FFast
+; 	STORE	DVel
+; 	
+; DetectFLoop4:
+; 	IN		SONALARM
+; 	JZERO	DetectFLoop4
+; 	
+; 	CALL	MoveOneFeet
+; 	CALL 	Rotate270
+; 	LOAD	FFast
+; 	STORE	DVel
+; 
+; DetectFLoop5:
+; 	IN		SONALARM
+; 	JZERO	DetectFLoop5
+; 	
+ 	CALL	MoveOneFeet
+ 	CALL 	Rotate270
+ 	LOAD	FFast
+ 	STORE	DVel
 
-DetectFLoop1:
-	IN		SONALARM
-	JZERO	DetectFLoop1
-	
-	CALL	MoveOneFeet
-	CALL 	Rotate270
-	LOAD	FFast
-	STORE	DVel
-	
-DetectFLoop2:
-	IN		SONALARM
-	JZERO	DetectFLoop2
-	
-	CALL	MoveOneFeet
-	CALL 	Rotate270
-	LOAD	FFast
-	STORE	DVel
-
-DetectFLoop3:
-	IN		SONALARM
-	JZERO	DetectFLoop3
-	
-	CALL	MoveOneFeet
-	CALL 	Rotate270
-	LOAD	FFast
-	STORE	DVel
-	
-DetectFLoop4:
-	IN		SONALARM
-	JZERO	DetectFLoop4
-	
-	CALL	MoveOneFeet
-	CALL 	Rotate270
-	LOAD	FFast
-	STORE	DVel
-
-DetectFLoop5:
-	IN		SONALARM
-	JZERO	DetectFLoop5
-	
-	CALL	MoveOneFeet
-	CALL 	Rotate270
-	LOAD	FFast
-	STORE	DVel
-
-DetectFLoop6:
-	IN		SONALARM
-	JZERO	DetectFLoop6
-	
-	CALL 	Rotate90
-	
-	RETURN
+ DetectFLoop6:
+ 	IN		SONALARM
+ 	JZERO	DetectFLoop6
+ 	
+ 	CALL 	Rotate90
+ 	
+ 	RETURN
