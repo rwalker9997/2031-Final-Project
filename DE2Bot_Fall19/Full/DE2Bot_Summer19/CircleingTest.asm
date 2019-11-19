@@ -77,49 +77,34 @@ Main:
 	LOAD 	Zero
 	STORE 	DTheta	
 	
+	LOAD   Ft3
+	OUT SONALARM
 	
-	CALL    ResetAll       ; reset pos, theta = 0
 
-Path:
-    CALL    EnableAllFront ; enable sensors and interupts 1-
-    LOAD    Ft3
-	OUT     SONALARM
-	CALL 	Forward        ; Dvel = FFAST
-	IN 		SONALARM       ; Read in 8 bit signal from sonar
-	AND 	Mask1234       ; SUB  00011110, will equal 30 if wall, if less not a wall
-	ADDI    -30
-	JNEG 	Front          ; A reflector os seen check the front
-	LOAD    shouldIDie     ; load in counter incremented in is a wall (wall should only be hit once)
-	ADDI    -1             ; value will be one so subtracting one should equal zero
-	JZERO   Die            ;Die
-	CALL	IsAWall        ; a wall was seen move and rotate to adjust
-	JUMP 	Path           ; resume forward motion by jumping back to path
-
-Front:	
-	IN 		SONALARM       ; Something was detected, check sensors 2 and 3 first (front sensors)
-	AND 	Mask23         ; and with 00001100, anything not 0 is in front
-	JZERO 	LeftSide       ; go to left side check
-	CALL  	CircleForward  ; Reflector in front, go forward
-	JUMP  	Path           ; reflector has been circled, go back to default path
-
-LeftSide:
-	IN 		SONALARM       ; read in sonalarm 8 bits
-	AND	    Mask1          ; and with 00000010 to remove all non sensor 1 values
-	JZERO	RightSide      ; if not to the left, check the right
-	CALL	CircleLeft     ; reflector on left, circle accordingly
-	JUMP 	PATH           ; reflector circled, back to path
-
-RightSide:
-	IN 		SONALARM       ; read in sonalarm 8 bit's
-	AND		Mask4          ; and with 00010000 to remove all non sensor 4 values
-	JZERO	Path           ; if nothing is there resume on path
-	CALL	CircleRight    ; something is to the right, circle
+Switch:
+	IN     SWITCHES  ;sw15 -> front, sw14 -> right, sw13 -> Left
+	SUB    SW14Mask
+	JNEG   CheckLeftCircle
+	JPOS   CheckFrontCircle
+	JZERO  CheckRightCircle
+	JUMP   Switch
 	
-	JUMP 	Path           ; resume path
+	
+	
+CheckLeftCircle:
+	CALL  CircleLeft
+	CALL ResetAll
+	JUMP InfLoop
 
+CheckRightCircle:
+	CALL  CircleRight
+	CALL ResetAll
+	JUMP InfLoop
 	
-	JUMP	InfLoop
-	
+CheckFrontCircle:
+	CALL  CircleForward
+	CALL ResetAll
+	JUMP InfLoop
 
 Die:
 ; Sometimes it's useful to permanently stop execution.
@@ -796,6 +781,8 @@ MinBatt:  DW 140       ; 14.0V - minimum safe battery voltage
 I2CWCmd:  DW &H1190    ; write one i2c byte, read one byte, addr 0x90
 I2CRCmd:  DW &H0190    ; write nothing, read one byte, addr 0x90
 
+SW14Mask: DW 16384    ; 2^15, only 14 active
+
 DataArray:
 	DW 0
 ;***************************************************************
@@ -882,9 +869,6 @@ IsAWall:
 	Call MoveTwoFeet
 	Call MoveTwoFeet
 	Call Rotate90
-	LOAD shouldIDie
-	ADDI 1
-	STORE shouldIDie
 	RETURN
 	
 
@@ -1176,5 +1160,3 @@ DetectFLoop0:
  	CALL 	Rotate90
  	
  	RETURN
-
-shouldIDie: DW 0
