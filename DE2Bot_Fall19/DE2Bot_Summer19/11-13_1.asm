@@ -74,25 +74,40 @@ Main:
 	; If you want to take manual control of the robot,
 	; execute CLI &B0010 to disable the timer interrupt.
 	
-	LOAD	Mask5
-	OUT 	SONAREN 	; enable sensor 5
-	IN 		DIST5 		; reads distance of sensor 5 in mm
+	LOAD 	Zero
+	STORE 	DTheta	
+	
+Sensor:
+	LOAD 	MASK0	
+	OUT 	SONAREN 	; enable snesor
+	IN 		DIST0 		; reads distance of sensor 0 in mm
+	OUT 	SSEG1
 	ADDI 	-610 		; 610mm = 2ft
-	JNEG 	Circle 		; if distance - 2ft < 0, reflector is 2ft away therefore go circle
+	OUT 	SSEG2
+	LOAD 	FT2		 	; load -610
+	OUT		SONALARM  
+
+	
+; 	JNEG 	Circle 		; if distance - 2ft < 0, reflector is 2ft away therefore go circle
+	
 Path:
 	LOAD	FFast 		; else, continue to drive forware
 	STORE	DVel
-	LOAD 	Zero
-	STORE 	DTheta
+	IN		SONALARM 	;sonar alarm 1 or 0
+	JPOS	Circle
+
+	JUMP 	Sensor
 	
-	
-	JUMP	InfLoop
-	;LOAD   Zero
-	;STORE  DTheta 		; use API to get robot to face 0 degrees
-	LOADI	&B00011110
-	OUT		SONAREN
+; 	
+; 	JUMP	InfLoop
+; 	;LOAD   Zero
+; 	;STORE  DTheta 		; use API to get robot to face 0 degrees
+; 	LOADI	&B00011110
+; 	OUT		SONAREN
 
 Circle:
+	LOAD	ZERO
+	STORE 	DVel
 	CALL MoveTwoFeet
 	CALL Rotate90
 	CALL MoveTwoFeet
@@ -138,7 +153,7 @@ Loop270:
 MoveTwoFeet:
 	Load FFast
 	STORE DVel 			; api to move forward
-	CALL Wait45
+	CALL Wait15
 	CALL ResetAll
 	RETURN
 
@@ -677,7 +692,7 @@ Wait1:
 Wloop:
 	IN     TIMER
 	OUT    XLEDS       ; User-feedback that a pause is occurring.
-	ADDI   -10         ; 1 second at 10Hz.
+	ADDI   -10         ; 1 second at 10Hz.`
 	JNEG   Wloop
 	RETURN
 	
