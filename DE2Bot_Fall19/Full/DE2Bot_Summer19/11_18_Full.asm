@@ -77,18 +77,21 @@ Main:
 	LOAD 	Zero
 	STORE 	DTheta	
 	
-	LOAD   Ft3
-	OUT SONALARM
 	
+	CALL    ResetAll       ; reset pos, theta = 0
 
 Path:
-	CALL    EnableAllFront ;enable sensors and interupts 1-4
-	CALL    ResetAll       ;reset pos, theta = 0
-	CALL 	Forward        ;Dvel = FFAST
+    CALL    EnableAllFront ; enable sensors and interupts 1-
+    LOAD    Ft3
+	OUT     SONALARM
+	CALL 	Forward        ; Dvel = FFAST
 	IN 		SONALARM       ; Read in 8 bit signal from sonar
-	AND 	Mask1234       ;And with  00011110, will equal 30 if wall, if less not a wall
-	ADDI 	-30            ; 30 is max value(wall), if less it will be a reflector
+	AND 	Mask1234       ; SUB  00011110, will equal 30 if wall, if less not a wall
+	ADDI    -30
 	JNEG 	Front          ; A reflector os seen check the front
+	LOAD    shouldIDie     ; load in counter incremented in is a wall (wall should only be hit once)
+	ADDI    -1             ; value will be one so subtracting one should equal zero
+	JZERO   Die            ;Die
 	CALL	IsAWall        ; a wall was seen move and rotate to adjust
 	JUMP 	Path           ; resume forward motion by jumping back to path
 
@@ -879,6 +882,9 @@ IsAWall:
 	Call MoveTwoFeet
 	Call MoveTwoFeet
 	Call Rotate90
+	LOAD shouldIDie
+	ADDI 1
+	STORE shouldIDie
 	RETURN
 	
 
@@ -1170,3 +1176,5 @@ DetectFLoop0:
  	CALL 	Rotate90
  	
  	RETURN
+
+shouldIDie: DW 0
