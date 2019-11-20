@@ -82,23 +82,41 @@ Main:
 
 Path:
     CALL    EnableAllFront ; enable sensors and interupts 1-
-    LOAD    Ft3
+    LOAD    Ft2
 	OUT     SONALARM
 	CALL 	Forward        ; Dvel = FFAST
-	IN 		SONALARM       ; Read in 8 bit signal from sonar
-	AND 	Mask1234       ; SUB  00011110, will equal 30 if wall, if less not a wall
-	ADDI    -30
-	JNEG 	Front          ; A reflector os seen check the front
+	IN      SONALARM       ; Read in 8 bit signal from sonar
+	XOR 	Mask1234       ; SUB  00011110, will equal 30 if wall, if less not a wall
+	JZERO 	Wall
+;	CALL    Die
+	JUMP    DelayForWall           ; A reflector os seen check the front
+Wall:
+	CALL    Die
 	LOAD    shouldIDie     ; load in counter incremented in is a wall (wall should only be hit once)
 	ADDI    -1             ; value will be one so subtracting one should equal zero
 	JZERO   Die            ;Die
 	CALL	IsAWall        ; a wall was seen move and rotate to adjust
 	JUMP 	Path           ; resume forward motion by jumping back to path
+	
+	
+DelayForWall:
+	LOADI   &HABCD
+	OUT     SSEG1
+	CALL    WaitDel
+	IN      SONALARM
+	XOR     Mask1234
+	JZERO   Wall
+; 	LOAD    shouldIDie     ; load in counter incremented in is a wall (wall should only be hit once)
+; 	ADDI    -1             ; value will be one so subtracting one should equal zero
+; 	JZERO   Die            ;Die
+; 	CALL	IsAWall        ; a wall was seen move and rotate to adjust
+	JUMP 	Front          ; resume forward motion by jumping back to path
 
 Front:	
 	IN 		SONALARM       ; Something was detected, check sensors 2 and 3 first (front sensors)
 	AND 	Mask23         ; and with 00001100, anything not 0 is in front
 	JZERO 	LeftSide       ; go to left side check
+	JNEG    LeftSide
 	CALL  	CircleForward  ; Reflector in front, go forward
 	JUMP  	Path           ; reflector has been circled, go back to default path
 
@@ -111,7 +129,7 @@ LeftSide:
 
 RightSide:
 	IN 		SONALARM       ; read in sonalarm 8 bit's
-	AND		Mask4          ; and with 00010000 to remove all non sensor 4 values
+	AND 	Mask4          ; and with 00010000 to remove all non sensor 4 values
 	JZERO	Path           ; if nothing is there resume on path
 	CALL	CircleRight    ; something is to the right, circle
 	
@@ -630,6 +648,15 @@ Wloop:
 	IN     TIMER
 	OUT    XLEDS       ; User-feedback that a pause is occurring.
 	ADDI   -10         ; 1 second at 10Hz.`
+	JNEG   Wloop
+	RETURN
+
+WaitDel:
+	OUT   TIMER
+WloopDel:
+	IN     TIMER
+	OUT    XLEDS       ; User-feedback that a pause is occurring.
+	ADDI   -5         ; 1 second at 10Hz.`
 	JNEG   Wloop
 	RETURN
 	
@@ -1178,3 +1205,4 @@ DetectFLoop0:
  	RETURN
 
 shouldIDie: DW 0
+maskFrontInv: DW &B11100001
